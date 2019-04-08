@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <link href="style.css" rel="stylesheet" type="text/css"></style> 
-    <script type="text/javascript" src="controler.js"></script>
+<!-- saved from url=(0070)file:///C:/Users/Est%C3%A1gio%20Tarde/Desktop/jogo-da-velha/index.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link href="file:///C:/Users/Est%C3%A1gio%20Tarde/Desktop/jogo-da-velha/style.css" rel="stylesheet" type="text/css"> 
+    <script type="text/javascript" src="file:///C:/Users/Est%C3%A1gio%20Tarde/Desktop/jogo-da-velha/controler.js"></script>
 </head>
 <body>
     <div class="container">
@@ -11,7 +11,7 @@
         <h3 id="j1">Jogador X: 0</h3>
         <h3 id="j2">Jogador O: 0</h3>
         <table class="jogo">
-            <tr class="row">
+            <tbody><tr class="row">
                 <td class="celula" id="0" onclick="marcar(0);"></td>
                 <td class="celula" id="1" onclick="marcar(1);"></td>
                 <td class="celula" id="2" onclick="marcar(2);"></td>
@@ -19,21 +19,23 @@
             <tr class="row">
                 <td class="celula" id="3" onclick="marcar(3);"></td>
                 <td class="celula" id="4" onclick="marcar(4);"></td>
-                <td class="celula" id="5" onclick="marcar(5);"></td>
+                <td class="celula" id="5" onclick="marcar(5);"><img src="file:///C:/Users/Est%C3%A1gio%20Tarde/Desktop/jogo-da-velha/imgs/x.jpg" alt="x"></td>
             </tr>
             <tr class="row">
                 <td class="celula" id="6" onclick="marcar(6);"></td>
                 <td class="celula" id="7" onclick="marcar(7);"></td>
                 <td class="celula" id="8" onclick="marcar(8);"></td>
             </tr>            
-        </table>
+        </tbody></table>
         <div class="botoes">
             <button id="zerar" onclick="zerar();">Zerar</button>
             <button id="reiniciar" onclick="recomecar();">Reiniciar</button>
         </div>
     </div>
-    <picture id="velha">
-        <img src="imgs/velha.png" alt="velhinha" />
-    </picture>
-</body>
-</html>
+    <img src="file:///C:/Users/Est%C3%A1gio%20Tarde/Desktop/jogo-da-velha/imgs/velha.png" alt="velhinha" id="velha " style="
+    position: absolute;
+    /* margin: 0 auto; */
+    right: 30vw;
+">
+
+</body></html>
