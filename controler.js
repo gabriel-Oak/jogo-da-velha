@@ -136,22 +136,28 @@ function recomecar(){
 function zerar(){
     j1 = 0;
     j2 = 0;
+    let t1 = document.getElementById('j1');
+    let t2 = document.getElementById('j2');
+    t1.innerText = ('Jogador X: ' + j1);
+    t2.innerText = ('Jogador O: ' + j2);
+    
     recomecar();
 }
     
 
 function marcar(quadrante){
-    let quadro = document.getElementById(quadrante);
+    let quadro = document.getElementById(quadrante).firstElementChild;
+
     if(marcados[quadrante] == 0){
         if(jogando == true){
             if(jogador == 1){
                 marcados[quadrante] = 'x';
-                quadro.innerHTML = "<img src='imgs/x.jpg' alt='x'/>"
+                quadro.innerHTML = "<polygon fill='none' stroke='#FFF' stroke-width='4' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6 '/>";
                 verifica();
                 jogador = 2;
             } else {
                 marcados[quadrante] = 'o';
-                quadro.innerHTML = "<img src='imgs/o.jpg' alt='o'/>"
+                quadro.innerHTML = " <circle cx='50%' cy='50%' r='40%' stroke='#FFF' stroke-width='4' fill='none' />"
                 verifica();
                 jogador = 1;
             }

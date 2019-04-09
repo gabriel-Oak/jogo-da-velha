@@ -1,4 +1,5 @@
 /*Os itens foram classificados por ordem de importancia*/
+/*Config do corpo*/
 *{
     margin: 0;
     top:0;
@@ -14,6 +15,7 @@ body{
     margin: 20px auto;
 }
 
+/*Config do jogo*/
 .jogo{
     display:flex;
     flex-direction: column;
@@ -33,8 +35,12 @@ body{
 }
 
 .celula:hover{
-    background-color: white;
     transition: 0.5s;
+}
+
+svg{
+    height: 100%;
+    width: 100%;
 }
 
 .celula img{
@@ -42,6 +48,7 @@ body{
     height: 100%;
 }
 
+/*Config dos botões*/
 .botoes{
     display: flex;
     flex-direction: row;
@@ -80,6 +87,7 @@ button{ width: 100px;}
     transition: 1s;
 }
 
+/*Config da velha*/
 #velha{
     position: absolute;
     margin: 0 45% 0 45%;
@@ -93,7 +101,7 @@ button{ width: 100px;}
     width: 10vw;
 }
 
-
+/*Configs de responsividade*/
 @media screen and (max-width: 480px){
     .container{
         width: 90vw;
