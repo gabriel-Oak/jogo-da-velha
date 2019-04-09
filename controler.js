@@ -124,7 +124,7 @@ function verifica(){
 
 function recomecar(){
     marcados = [0,0,0,0,0,0,0,0,0];
-    let tab = document.getElementsByTagName('td');
+    let tab = document.getElementsByTagName('svg');
     for(let i = 0; i < tab.length; i++){
         tab[i].innerHTML = '';
     }
@@ -152,12 +152,12 @@ function marcar(quadrante){
         if(jogando == true){
             if(jogador == 1){
                 marcados[quadrante] = 'x';
-                quadro.innerHTML = "<polygon fill='none' stroke='#FFF' stroke-width='4' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6 '/>";
+                quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='4' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6' fill='none'/>";
                 verifica();
                 jogador = 2;
             } else {
                 marcados[quadrante] = 'o';
-                quadro.innerHTML = " <circle cx='50%' cy='50%' r='40%' stroke='#FFF' stroke-width='4' fill='none' />"
+                quadro.innerHTML = " <circle cx='50%' cy='50%' r='40%' stroke='#FFF' stroke-width='15' fill='none' />"
                 verifica();
                 jogador = 1;
             }
