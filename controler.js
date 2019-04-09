@@ -4,6 +4,45 @@ var j1 = 0;
 var j2 = 0;
 var jogando = true;
 
+function riscarVert(pos){
+    for(let i = 0; i < 9; i++){
+        let elemento = document.getElementById(pos+i).firstChild;
+        let backup = elemento.innerHTML;
+        let vertical = "<polygon stroke='#F00' stroke-width='10' points='50,-10 50,110' fill='none'/>";
+        elemento.innerHTML = backup + vertical;
+        i+=2
+    }
+}
+
+function riscaHori(pos){
+    for(let i = 0; i < 3; i++){
+        let elemento = document.getElementById(pos+i).firstChild;
+        let backup = elemento.innerHTML;
+        let vertical = "<polygon stroke='#F00' stroke-width='10' points='-10,50 110,50' fill='none'/>";
+        elemento.innerHTML = backup + vertical;
+    }
+}
+
+function riscaDiag(pos){
+    if(pos == 0){
+        for(let i = 0; i < 9; i++){
+            let elemento = document.getElementById(pos+i).firstChild;
+            let backup = elemento.innerHTML;
+            let vertical = "<polygon stroke='#F00' stroke-width='10' points='-10,-10 110,110' fill='none'/>";
+            elemento.innerHTML = backup + vertical;
+            i+=3;
+        }
+    } else {
+        for(let i = 0; i < 6; i++){
+            let elemento = document.getElementById(pos+i).firstChild;
+            let backup = elemento.innerHTML;
+            let vertical = "<polygon stroke='#F00' stroke-width='10' points='110,-10 -10,110' fill='none'/>";
+            elemento.innerHTML = backup + vertical;
+            i+=1;
+        }
+    }
+}
+
 function pontuar(jogador, jo1, jo2){
     j1 = jo1;
     j2 = jo2;
@@ -24,6 +63,8 @@ function verifica(){
        marcados[1] == marcados[2] && 
        marcados[0] != 0){
 
+        riscaHori(0);
+
         if(marcados[0] == 'x'){
             pontuar('j1',j1+1,j2);
         } else {
@@ -33,24 +74,30 @@ function verifica(){
               marcados[4] == marcados[5] && 
               marcados[3] != 0){
         
-                if(marcados[3] == 'x'){
+        riscaHori(3);
+
+        if(marcados[3] == 'x'){
                     pontuar('j1',j1+1,j2);
-                } else {
+        } else {
                     pontuar('j2',j1,j2+1);
-                }
+        }
     } else if(marcados[6] == marcados[7] &&
               marcados[6] == marcados[8] && 
               marcados[6] != 0){
-  
-          if(marcados[6] == 'x'){
+                
+        riscaHori(6);
+
+        if(marcados[6] == 'x'){
                 pontuar('j1',j1+1,j2);
-          } else {
+        } else {
                 pontuar('j2',j1,j2+1);
-          }
+        }
           //-------------------linhas
     } else if(marcados[0] == marcados[4] &&
             marcados[4] == marcados[8] && 
             marcados[0] != 0){
+
+        riscaDiag(0);
 
         if(marcados[0] == 'x'){
             pontuar('j1',j1+1,j2);
@@ -61,6 +108,8 @@ function verifica(){
               marcados[4] == marcados[6] && 
               marcados[2] != 0){
 
+        riscaDiag(2);
+
         if(marcados[2] == 'x'){
             pontuar('j1',j1+1,j2);
         } else {
@@ -70,15 +119,8 @@ function verifica(){
     } else if(marcados[0] == marcados[3] &&
                 marcados[3] == marcados[6] && 
                 marcados[0] != 0){
-
-        if(marcados[0] == 'x'){
-            pontuar('j1',j1+1,j2);
-        } else {
-            pontuar('j2',j1,j2+1);
-        }
-    } else if(marcados[0] == marcados[3] &&
-            marcados[3] == marcados[6] && 
-            marcados[0] != 0){
+        
+                    riscarVert(0);
 
         if(marcados[0] == 'x'){
             pontuar('j1',j1+1,j2);
@@ -88,7 +130,9 @@ function verifica(){
     } else if(marcados[1] == marcados[4] &&
             marcados[4] == marcados[7] && 
             marcados[1] != 0){
-
+        
+                riscarVert(1);
+        
         if(marcados[1] == 'x'){
             pontuar('j1',j1+1,j2);
         } else {
@@ -98,6 +142,8 @@ function verifica(){
     else if(marcados[2] == marcados[5] &&
             marcados[5] == marcados[8] && 
             marcados[2] != 0){
+
+                riscarVert(2);
 
         if(marcados[2] == 'x'){
             pontuar('j1',j1+1,j2);
@@ -125,6 +171,7 @@ function verifica(){
 function recomecar(){
     marcados = [0,0,0,0,0,0,0,0,0];
     let tab = document.getElementsByTagName('svg');
+    jogador = 1;
     for(let i = 0; i < tab.length; i++){
         tab[i].innerHTML = '';
     }
@@ -152,7 +199,7 @@ function marcar(quadrante){
         if(jogando == true){
             if(jogador == 1){
                 marcados[quadrante] = 'x';
-                quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='4' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6' fill='none'/>";
+                quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='6' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6' fill='none'/>";
                 verifica();
                 jogador = 2;
             } else {
