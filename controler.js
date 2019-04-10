@@ -199,7 +199,7 @@ function marcar(quadrante){
         if(jogando == true){
             if(jogador == 1){
                 marcados[quadrante] = 'x';
-                quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='6' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6' fill='none'/>";
+                quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='6' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6 3,22' fill='none'/>";
                 verifica();
                 jogador = 2;
             } else {

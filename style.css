@@ -19,7 +19,6 @@ body{
 .jogo{
     display:flex;
     flex-direction: column;
-
     margin: 20px auto;
     width: 100%;
 }
@@ -27,6 +26,7 @@ body{
 .row{
     display: flex;
     flex-direction: row;
+    width:100%;
 }
 
 .celula{
@@ -123,7 +123,7 @@ button{ width: 100px;}
 }
 
 /*Configs de responsividade*/
-@media screen and (max-width: 480px){
+@media only screen and (max-width: 480px){
     .container{
         width: 90vw;
     }
@@ -135,7 +135,7 @@ button{ width: 100px;}
 
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px){
+@media only screen and (min-width: 481px) and (max-width: 768px){
     .container{
         width: 45vw
     }
@@ -147,7 +147,7 @@ button{ width: 100px;}
 
 }
 
-@media screen and (min-width: 769px) and (max-width: 1199px){
+@media only screen and (min-width: 769px) and (max-width: 1199px){
     .container{
         width: 45vw
     }
@@ -160,7 +160,7 @@ button{ width: 100px;}
     
 }
 
-@media screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     .container{
         width: 30vw
     }
