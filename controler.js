@@ -56,6 +56,7 @@ function verificaLinha(pos){
         } else {
             pontuar('j2',j1,j2+1);
         }
+        return true;
     } else if(pos < 6){verificaLinha(pos+3)}
     else{return false;}
 }
@@ -72,6 +73,7 @@ function verificaColuna(pos){
         } else {
             pontuar('j2',j1,j2+1);
         }
+        return true;
     } else if(pos < 2){verificaColuna(pos+1)}
     else{return false;}
 }
@@ -124,7 +126,7 @@ function verifica(){
                 velha = false;
             }
         }
-        if(velha == true){
+        if(velha){
             jogando = false;
             document.getElementById("velha").style.display = 'block';
         }
@@ -187,9 +189,13 @@ function start(){
 }
 
 function jogoIa(num){
-    if(marcados[num] == 0){
-        marcar(num);
-    } else if(jogando == true){
-        jogoIa(Math.floor(Math.random() * 8.9));
+    if(jogando){
+        if(marcados[4] == 0){
+            marcar(4);
+        }else if(marcados[num] == 0){
+            marcar(num);
+        } else{
+            jogoIa(Math.floor(Math.random() * 8.9));
+        }
     }
 }

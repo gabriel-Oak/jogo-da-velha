@@ -85,7 +85,7 @@ button{ width: 100px;}
     background-color: #555555;
     color: white;
     border: none;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 auto;
     border-radius: 4px;
     padding: 15px 5px;
     transition: 1s;
@@ -100,7 +100,7 @@ button{ width: 100px;}
     background-color: #555555;
     color: white;
     border: none;
-    margin: 0 0 0 auto;
+    margin: 0 auto 0 auto;
     border-radius: 4px;
     padding: 15px 5px;
     transition: 1s;
@@ -115,7 +115,7 @@ button{ width: 100px;}
     background-color: #555555;
     color: white;
     border: none;
-    margin: 0 0 0 auto;
+    margin: 0 auto 0 0;
     border-radius: 4px;
     padding: 15px 5px;
     transition: 1s;
