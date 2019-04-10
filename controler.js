@@ -3,6 +3,7 @@ var jogador = 1;
 var j1 = 0;
 var j2 = 0;
 var jogando = true;
+let ia = 0;
 
 function riscarVert(pos){
     for(let i = 0; i < 9; i++){
@@ -141,7 +142,7 @@ function recomecar(){
     }
     jogando = true;
     document.getElementById("velha").style.display = 'none';
-
+    ia = 0;
 }
 
 function zerar(){
@@ -166,6 +167,9 @@ function marcar(quadrante){
                 quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='6' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6 3,22' fill='none'/>";
                 verifica();
                 jogador = 2;
+                if(ia == 1){
+                    jogoIa(Math.floor(Math.random() * 8.9));
+                }
             } else {
                 marcados[quadrante] = 'o';
                 quadro.innerHTML = " <circle cx='50%' cy='50%' r='40%' stroke='#FFF' stroke-width='15' fill='none' />"
@@ -173,5 +177,19 @@ function marcar(quadrante){
                 jogador = 1;
             }
         }
+    }
+}
+
+function start(){
+    recomecar();
+    ia = 1;
+    alert('Jogo facil selecionado');
+}
+
+function jogoIa(num){
+    if(marcados[num] == 0){
+        marcar(num);
+    } else if(jogando == true){
+        jogoIa(Math.floor(Math.random() * 8.9));
     }
 }
