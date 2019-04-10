@@ -43,6 +43,38 @@ function riscaDiag(pos){
     }
 }
 
+function verificaLinha(pos){
+    if(marcados[pos] == marcados[pos+1] &&
+       marcados[pos+1] == marcados[pos+2] && 
+       marcados[pos+0] != 0){
+
+        riscaHori(pos);
+
+        if(marcados[pos] == 'x'){
+            pontuar('j1',j1+1,j2);
+        } else {
+            pontuar('j2',j1,j2+1);
+        }
+    } else if(pos < 6){verificaLinha(pos+3)}
+    else{return false;}
+}
+
+function verificaColuna(pos){
+    if(marcados[pos] == marcados[pos+3] &&
+                marcados[pos+3] == marcados[pos+6] && 
+                marcados[pos] != 0){
+        
+                    riscarVert(pos);
+
+        if(marcados[pos] == 'x'){
+            pontuar('j1',j1+1,j2);
+        } else {
+            pontuar('j2',j1,j2+1);
+        }
+    } else if(pos < 2){verificaColuna(pos+1)}
+    else{return false;}
+}
+
 function pontuar(jogador, jo1, jo2){
     j1 = jo1;
     j2 = jo2;
@@ -51,49 +83,16 @@ function pontuar(jogador, jo1, jo2){
 
     if( jogador == 'j1'){
         j.innerText = ('Jogador X: ' + j1);
-        alert('Jogador 1 ganhou!');
+        //alert('Jogador 1 ganhou!');
     } else {
         j.innerText = ('Jogador O: ' + j2);
-        alert('Jogador 2 ganhou');
+        //alert('Jogador 2 ganhou');
     }   
 }
 
 function verifica(){
-    if(marcados[0] == marcados[1] &&
-       marcados[1] == marcados[2] && 
-       marcados[0] != 0){
-
-        riscaHori(0);
-
-        if(marcados[0] == 'x'){
-            pontuar('j1',j1+1,j2);
-        } else {
-            pontuar('j2',j1,j2+1);
-        }
-    } else if(marcados[3] == marcados[4] &&
-              marcados[4] == marcados[5] && 
-              marcados[3] != 0){
         
-        riscaHori(3);
-
-        if(marcados[3] == 'x'){
-                    pontuar('j1',j1+1,j2);
-        } else {
-                    pontuar('j2',j1,j2+1);
-        }
-    } else if(marcados[6] == marcados[7] &&
-              marcados[6] == marcados[8] && 
-              marcados[6] != 0){
-                
-        riscaHori(6);
-
-        if(marcados[6] == 'x'){
-                pontuar('j1',j1+1,j2);
-        } else {
-                pontuar('j2',j1,j2+1);
-        }
-          //-------------------linhas
-    } else if(marcados[0] == marcados[4] &&
+    if(marcados[0] == marcados[4] &&
             marcados[4] == marcados[8] && 
             marcados[0] != 0){
 
@@ -116,42 +115,8 @@ function verifica(){
             pontuar('j2',j1,j2+1);
         }
         //--------------------------diagonais
-    } else if(marcados[0] == marcados[3] &&
-                marcados[3] == marcados[6] && 
-                marcados[0] != 0){
-        
-                    riscarVert(0);
-
-        if(marcados[0] == 'x'){
-            pontuar('j1',j1+1,j2);
-        } else {
-            pontuar('j2',j1,j2+1);
-        }
-    } else if(marcados[1] == marcados[4] &&
-            marcados[4] == marcados[7] && 
-            marcados[1] != 0){
-        
-                riscarVert(1);
-        
-        if(marcados[1] == 'x'){
-            pontuar('j1',j1+1,j2);
-        } else {
-            pontuar('j2',j1,j2+1);
-        }
-    }
-    else if(marcados[2] == marcados[5] &&
-            marcados[5] == marcados[8] && 
-            marcados[2] != 0){
-
-                riscarVert(2);
-
-        if(marcados[2] == 'x'){
-            pontuar('j1',j1+1,j2);
-        } else {
-            pontuar('j2',j1,j2+1);
-        }
-        //------------------------colunas
-    } else {
+    
+    } else if(!verificaLinha(0) && !verificaColuna(0)) {
         let velha = true;
         for(let i = 0; i < marcados.length; i++){
             if(marcados[i] == 0){
@@ -159,7 +124,6 @@ function verifica(){
             }
         }
         if(velha == true){
-            alert('Deu velha');
             jogando = false;
             document.getElementById("velha").style.display = 'block';
         }
