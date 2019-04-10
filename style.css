@@ -36,7 +36,10 @@ body{
 
 .celula:hover{
     transition: 0.5s;
+    cursor: hand;
 }
+
+/*O css não suportou os id's numericos*/
 
 /*Configurações dos svgs*/
 svg{
