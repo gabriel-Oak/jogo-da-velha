@@ -193,7 +193,20 @@ function jogoIa(num){
         if(marcados[4] == 0){
             marcar(4);
         }else if(marcados[num] == 0){
-            marcar(num);
+            //marcar(num);
+            if(marcados[num+1] == 'x'){
+                marcar(num);
+            } else if(marcados[num-1] == 'x'){
+                marcar(num);
+            } else if(marcados[num-3] == 'x'){
+                marcar(num);
+            } else if( marcados[num+3] == 'x'){
+                marcar(num);
+            } else if(marcados[num-4] == 'x'){
+                marcar(num);
+            } else if(marcados[num+4] == 'x'){
+                marcar(num);
+            } else { jogoIa(Math.floor(Math.random() * 8.9)); }
         } else{
             jogoIa(Math.floor(Math.random() * 8.9));
         }
