@@ -1,8 +1,9 @@
-var marcados = [0,0,0,0,0,0,0,0,0];
-var jogador = 1;
-var j1 = 0;
-var j2 = 0;
-var jogando = true;
+let marcados = [0,0,0,0,0,0,0,0,0];
+let jogadas =[];
+let jogador = 1;
+let j1 = 0;
+let j2 = 0;
+let jogando = true;
 let ia = 0;
 
 function riscarVert(pos){
@@ -137,6 +138,7 @@ function verifica(){
 
 function recomecar(){
     marcados = [0,0,0,0,0,0,0,0,0];
+    jogadas = [];
     let tab = document.getElementsByTagName('svg');
     jogador = 1;
     for(let i = 0; i < tab.length; i++){
@@ -165,6 +167,7 @@ function marcar(quadrante){
     if(marcados[quadrante] == 0){
         if(jogando == true){
             if(jogador == 1){
+                jogadas.push(quadrante);
                 marcados[quadrante] = 'x';
                 quadro.innerHTML = "<polygon stroke='#FFF' stroke-width='6' points='5,20 36,50 5,80 16,94 48,63 79,94 90,80 62,51 92,17 80,6 50,38 16,6 3,22' fill='none'/>";
                 verifica();
@@ -189,9 +192,36 @@ function start(){
 }
 
 function jogoIa(num){
+    console.log(jogadas);
     if(jogando){
         if(marcados[4] == 0){
             marcar(4);
+        }else if((jogadas.length > 1 && jogadas.length < 4) && marcados[4] != 'x'){
+            
+            let ultimo = jogadas.length - 1;
+            let ultimos = [jogadas[ultimo-1],jogadas[ultimo]]
+            console.log(jogadas.length + " teste " + ultimos);
+
+            if((ultimos[0] == 0 && ultimos[1] == 2) || (ultimos[1] == 0 && ultimos[0] == 2) && marcados[1] == 0 ){
+                marcar(1);
+            } else if((ultimos[0] == 0 && ultimos[1] == 6) || (ultimos[1] == 0 && ultimos[0] == 6) && marcados[3] == 0){
+                marcar(3);
+            } else if((ultimos[0] == 2 && ultimos[1] == 8) || (ultimos[1] == 2 && ultimos[0] == 8) && marcados[5] == 0){
+                marcar(5);
+            } else if((ultimos[0] == 6 && ultimos[1] == 8) || (ultimos[1] == 6 && ultimos[0] == 8) && marcados[7] == 0){              
+                marcar(7);                            
+            } else {
+                let x = true;
+                while(x == true){
+                    let i = Math.floor(Math.random() * 8.9);
+                    
+                    if((i == 0 || i == 2 || i == 6 || i == 8) && marcados[i] == 0){
+                        console.log(i);    
+                        marcar(i);
+                        x = false;
+                    }
+                }
+            }
         }else if(marcados[num] == 0){
             //marcar(num);
             if(marcados[num+1] == 'x'){
