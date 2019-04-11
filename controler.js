@@ -195,18 +195,15 @@ function jogoIa(num){
     if(jogando){
         if(marcados[4] == 0){
             marcar(4);
-        }else if((jogadas.length > 1 && jogadas.length < 4) && marcados[4] != 'x'){
+        }else if((jogadas.length > 1 && jogadas.length < 4)){
             
-            let ultimo = jogadas.length - 1;
-            let ultimos = [jogadas[ultimo-1],jogadas[ultimo]]
-
-            if((ultimos[0] == 0 && ultimos[1] == 2) || (ultimos[1] == 0 && ultimos[0] == 2) && marcados[1] == 0 ){
+            if((marcados[0] == 'x' && marcados[2] == 'x') && marcados[1] == 0 ){
                 marcar(1);
-            } else if((ultimos[0] == 0 && ultimos[1] == 6) || (ultimos[1] == 0 && ultimos[0] == 6) && marcados[3] == 0){
+            } else if((marcados[0] == 'x' && marcados[6] == 'x') && marcados[3] == 0){
                 marcar(3);
-            } else if((ultimos[0] == 2 && ultimos[1] == 8) || (ultimos[1] == 2 && ultimos[0] == 8) && marcados[5] == 0){
+            } else if((marcados[2] == 'x' && marcados[8] == 'x') && marcados[5] == 0){
                 marcar(5);
-            } else if((ultimos[0] == 6 && ultimos[1] == 8) || (ultimos[1] == 6 && ultimos[0] == 8) && marcados[7] == 0){              
+            } else if((marcados[6] == 'x' && marcados[8] == 'x') && marcados[7] == 0){              
                 marcar(7);                            
             } else {
                 let x = true;
