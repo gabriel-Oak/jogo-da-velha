@@ -192,7 +192,6 @@ function start(){
 }
 
 function jogoIa(num){
-    console.log(jogadas);
     if(jogando){
         if(marcados[4] == 0){
             marcar(4);
@@ -200,7 +199,6 @@ function jogoIa(num){
             
             let ultimo = jogadas.length - 1;
             let ultimos = [jogadas[ultimo-1],jogadas[ultimo]]
-            console.log(jogadas.length + " teste " + ultimos);
 
             if((ultimos[0] == 0 && ultimos[1] == 2) || (ultimos[1] == 0 && ultimos[0] == 2) && marcados[1] == 0 ){
                 marcar(1);
@@ -216,7 +214,6 @@ function jogoIa(num){
                     let i = Math.floor(Math.random() * 8.9);
                     
                     if((i == 0 || i == 2 || i == 6 || i == 8) && marcados[i] == 0){
-                        console.log(i);    
                         marcar(i);
                         x = false;
                     }
