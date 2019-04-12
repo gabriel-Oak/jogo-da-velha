@@ -57,7 +57,7 @@ function verificaLinha(pos){
         } else {
             pontuar('j2',j1,j2+1);
         }
-        return true;
+        
     } else if(pos < 6){verificaLinha(pos+3)}
     else{return false;}
 }
@@ -71,6 +71,7 @@ function verificaColuna(pos){
 
         if(marcados[pos] == 'x'){
             pontuar('j1',j1+1,j2);
+        	
         } else {
             pontuar('j2',j1,j2+1);
         }
@@ -95,7 +96,8 @@ function pontuar(jogador, jo1, jo2){
 }
 
 function verifica(){
-        
+    verificaLinha(0);
+    verificaColuna(0);
     if(marcados[0] == marcados[4] &&
             marcados[4] == marcados[8] && 
             marcados[0] != 0){
@@ -119,8 +121,8 @@ function verifica(){
             pontuar('j2',j1,j2+1);
         }
         //--------------------------diagonais
-    
-    } else if(!verificaLinha(0) && !verificaColuna(0)) {
+        
+    } else if(jogando != false){
         let velha = true;
         for(let i = 0; i < marcados.length; i++){
             if(marcados[i] == 0){
